@@ -1,4 +1,5 @@
 # main.py
+from contextlib import asynccontextmanager
 from typing import List
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,7 +14,8 @@ async def lifespan(app: FastAPI):
     yield
     # shutdown (optional)
     # e.g., close pools, flush logs, etc.
-app = FastAPI(title="Tasks API")
+
+app = FastAPI(title="Tasks API", lifespan=lifespan)
 
 # CORS: add your frontend origin during local dev & deploy
 app.add_middleware(
