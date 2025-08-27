@@ -6,6 +6,13 @@ from sqlmodel import Session, select
 from db import engine, create_db_and_tables
 from models import Task, TaskCreate, TaskRead, TaskUpdate
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # startup
+    create_db_and_tables()
+    yield
+    # shutdown (optional)
+    # e.g., close pools, flush logs, etc.
 app = FastAPI(title="Tasks API")
 
 # CORS: add your frontend origin during local dev & deploy
