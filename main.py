@@ -20,7 +20,7 @@ app = FastAPI(title="Tasks API", lifespan=lifespan)
 # CORS: add your frontend origin during local dev & deploy
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://*", "http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["https://webapplicationfr.netlify.app", "http://localhost:5173", "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
