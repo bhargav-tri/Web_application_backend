@@ -30,9 +30,11 @@ def get_session():
     with Session(engine) as session:
         yield session
 
-@app.on_event("startup")
-def on_startup():
-    create_db_and_tables()
+# @app.on_event("startup")
+# def on_startup():
+#     create_db_and_tables()
+
+"""Commented due to presence of lifespan handler"""
 
 @app.get("/health")
 def health():
