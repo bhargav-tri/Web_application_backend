@@ -3,6 +3,7 @@ backend/.venv/
 __pycache__/
 *.pyc
 *.db
+*.sh
 
 # Env
 *.env
