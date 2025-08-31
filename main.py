@@ -54,7 +54,7 @@ def get_session():
 """Commented due to presence of lifespan handler"""
 
 @app.get("/health")
-@limiter.limit("60/minute")
+@limiter.limit("10/minute")
 def health(request: Request):
     return {"status": "ok"}
 
