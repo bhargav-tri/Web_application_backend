@@ -1,7 +1,7 @@
 # main.py
 from contextlib import asynccontextmanager
 from typing import List
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session, select
 from db import engine, create_db_and_tables
@@ -55,7 +55,7 @@ def get_session():
 
 @app.get("/health")
 @limiter.limit("60/minute")
-def health():
+def health(request: Request):
     return {"status": "ok"}
 
 @app.get("/tasks", response_model=List[TaskRead])
